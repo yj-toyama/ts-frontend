@@ -20,15 +20,25 @@ export default function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const handleClick = async () => {
+  const handleClick1 = () => {
+    console.log(data.helloFromBackend1);
+  };
+
+  const handleClick2 = () => {
+    console.log(data.helloFromBackend2);
+  };
+
+  const handleDummyMutationClick = async () => {
     await performDummyMutation();
   };
 
   return (
     <div>
-      <h1>{data.helloFromBackend1}</h1>
-      <h1>{data.helloFromBackend2}</h1>
-      <button onClick={handleClick}>Perform Dummy Mutation</button>
+      <button onClick={handleClick1}>call backend1</button>
+      {data && <h2>{data.helloFromBackend1}</h2>}
+      <button onClick={handleClick2}>call backend2</button>
+      {data && <h2>{data.helloFromBackend2}</h2>}
+      <button onClick={handleDummyMutationClick}>Perform Dummy Mutation</button>
       {mutationData && <h2>{mutationData.dummyMutation}</h2>}
     </div>
   );
